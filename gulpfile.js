@@ -9,7 +9,10 @@ const plugins = require('gulp-load-plugins')();
 const src = path.join(__dirname, 'styl');
 const dist = path.join(__dirname, 'dist');
 
-gulp.task('clean', (done) => del([ dist ]).then(() => done()));
+gulp.task('clean', (done) => {
+  del([ dist ])
+    .then(() => done())
+});
 
 gulp.task('stylus', () => {
   return gulp.src(src + '/index.styl')

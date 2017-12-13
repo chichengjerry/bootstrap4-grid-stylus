@@ -1,0 +1,16 @@
+// Reset
+//
+// Normalization of HTML elements, manually forked from Normalize.css to remove
+// styles targeting irrelevant browsers while applying new styles.
+
+// IE10+ doesn't honor `<meta name="viewport">` in some cases.
+@-ms-viewport
+  width device-width
+
+html
+  box-sizing border-box
+  -ms-overflow-style scrollbar
+
+*, *::before, *::after
+  box-sizing inherit
+

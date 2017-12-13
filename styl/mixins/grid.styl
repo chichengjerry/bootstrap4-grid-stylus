@@ -6,12 +6,12 @@ make-gutters($gutters = $grid-gutter-widths)
   for $breakpoint, $gutter in $gutters
     +media-breakpoint-up($breakpoint)
       padding-right ($gutter / 2)
-      padding-left  ($gutter / 2)
+      padding-left ($gutter / 2)
 
 make-container($gutters = $grid-gutter-widths)
-  position      relative
-  margin-left   auto
-  margin-right  auto
+  position relative
+  margin-left auto
+  margin-right auto
   make-gutters($gutters)
 
 // Creates a wrapper for a series of columns
@@ -39,7 +39,6 @@ make-col-ready($gutters = $grid-gutter-widths)
   min-height 1px // Prevent collapsing
   make-gutters($gutters)
 
-
 make-col($size, $columns = $grid-columns)
   flex 0 0 percentage($size / $columns)
   // width: percentage($size / $columns);
@@ -47,7 +46,6 @@ make-col($size, $columns = $grid-columns)
   // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
   // do not appear to require this.
   max-width percentage($size / $columns)
-
 
 make-col-offset($size, $columns = $grid-columns)
   margin-left percentage($size / $columns)
