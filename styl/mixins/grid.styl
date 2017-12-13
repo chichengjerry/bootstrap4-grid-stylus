@@ -1,0 +1,74 @@
+/// Grid system
+//
+// Generate semantic grid columns with these mixins.
+
+make-gutters($gutters = $grid-gutter-widths)
+  for $breakpoint, $gutter in $gutters
+    +media-breakpoint-up($breakpoint)
+      padding-right ($gutter / 2)
+      padding-left  ($gutter / 2)
+
+make-container($gutters = $grid-gutter-widths)
+  position      relative
+  margin-left   auto
+  margin-right  auto
+  make-gutters($gutters)
+
+// Creates a wrapper for a series of columns
+make-row($grid-breakpoints = $grid-gutter-widths)
+  display flex
+  flex-wrap wrap
+  for $name, $value in $grid-breakpoints
+    +media-breakpoint-up($name)
+      margin-right ($value / -2)
+      margin-left ($value / -2)
+
+// For each breakpoint, define the maximum width of the container in a media query
+make-container-max-widths($max-widths = $container-max-widths, $breakpoints = $grid-breakpoints)
+  for $breakpoint, $width in $max-widths
+    +media-breakpoint-up($breakpoint, $breakpoints)
+      width $width
+      max-width 100%
+
+make-col-ready($gutters = $grid-gutter-widths)
+  position relative
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we use `flex` values
+  // later on to override this initial width.
+  width 100%
+  min-height 1px // Prevent collapsing
+  make-gutters($gutters)
+
+
+make-col($size, $columns = $grid-columns)
+  flex 0 0 percentage($size / $columns)
+  // width: percentage($size / $columns);
+  // Add a `max-width` to ensure content within each column does not blow out
+  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  // do not appear to require this.
+  max-width percentage($size / $columns)
+
+
+make-col-offset($size, $columns = $grid-columns)
+  margin-left percentage($size / $columns)
+
+make-col-push($size, $columns = $grid-columns)
+  if $size > 0
+    left percentage($size / $columns)
+  else
+    left auto
+
+make-col-pull($size, $columns = $grid-columns)
+  if $size > 0
+    right percentage($size / $columns)
+  else
+    right auto
+
+make-col-modifier($type, $size, $columns)
+  if $type == push
+    make-col-push($size, $columns)
+  else if $type == pull
+    make-col-pull($size, $columns)
+  else if $type == offset
+    make-col-offset($size, $columns)
+
