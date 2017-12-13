@@ -3,15 +3,6 @@
   "description": "A Stylus implementation of Bootstrap 4 grid system",
   "version": "0.0.1",
   "author": "Jerry Zhang",
-  "dependencies": {},
-  "devDependencies": {
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-sequence": "^0.4.6",
-    "gulp-stylus": "^2.6.0"
-  },
   "license": "MIT",
   "main": "index.js",
   "browserslist": [
@@ -23,5 +14,14 @@
     "Safari >= 9",
     "Android >= 4.4",
     "Opera >= 30"
-  ]
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-stylus": "^2.6.0"
+  }
 }
